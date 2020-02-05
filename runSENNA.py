@@ -9,20 +9,27 @@ Created on Sun Jun  9 13:19:48 2019
 import os
 import pandas as pd
 import random
-
+from sys import platform as _platform
 
 def runSENNA(preprocessed_file):
                                            
   # remember the directory where the program should be run from
   cwd = os.getcwd()
   # change directories to the generated project directory 
-  # (the installation command must be run from here)
-  path=cwd+'/senna/'
-  os.chdir(path)
+  # (the installation command must be run from here)  
+  print(_platform)
   
   try:
       # run the shell command
-      cmd = './senna -srl < ' + preprocessed_file + ' > output.txt'
+      if _platform == "linux" or _platform == "linux2" or _platform == "darwin":
+        path=cwd+'/senna/'
+        os.chdir(path)
+        cmd = './senna -srl < ' + preprocessed_file + ' > output.txt'
+      elif _platform == "win32" or _platform == "win64":   
+        path=cwd+'/senna/'     
+        os.chdir(path)
+        cmd = '.\\senna-win32 -srl < ' + preprocessed_file + ' > output.txt'        
+        print(cmd)
       #cmd = './senna -pos -ner -srl < ' + preprocessed_file + ' > output.txt'
       os.system(cmd)
   except:    
