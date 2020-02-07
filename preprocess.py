@@ -6,9 +6,10 @@ Created on Wed Jun 19 00:42:13 2019
 @author: YM
 """
 import spacy
-import contractions_copy as contractions # pip install contractions doesn't work, so i copy the file here (change to import contractions in case there's update after 4 july 2019)
+# import contractions_copy as contractions # pip install contractions doesn't work, so i copy the file here (change to import contractions in case there's update after 4 july 2019)
+import contractions
 import re
-import truecase # restores case information for text
+# import truecase # restores case information for text
 
 """
 Tokenize
@@ -24,11 +25,11 @@ def preprocess_text (inputText):
     clean_text = ''    
     clean_text = re.sub(' +', ' ', inputText)    # remove double spaces    
     clean_text = contractions.fix(clean_text)    # contraction
-    clean_text = truecase.get_true_case(clean_text)
+    # clean_text = truecase.get_true_case(clean_text)
     return clean_text
 
 
-# transofrm input into senna_input (preprocessed and tokenized)
+# transform input into senna_input (preprocessed and tokenized)
 def preprocess_senna_input (input_path, senna_input_path):  
     preprocessed = ''
     with open(input_path) as f:

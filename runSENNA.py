@@ -17,19 +17,22 @@ def runSENNA(preprocessed_file):
   cwd = os.getcwd()
   # change directories to the generated project directory 
   # (the installation command must be run from here)  
-  print(_platform)
+  # print(_platform)
   
   try:
       # run the shell command
-      if _platform == "linux" or _platform == "linux2" or _platform == "darwin":
+      if _platform == "linux" or _platform == "linux2":
         path=cwd+'/senna/'
         os.chdir(path)
         cmd = './senna -srl < ' + preprocessed_file + ' > output.txt'
+      elif _platform == "darwin":
+        path=cwd+'/senna/'
+        os.chdir(path)
+        cmd = './senna-osx -srl < ' + preprocessed_file + ' > output.txt'
       elif _platform == "win32" or _platform == "win64":   
         path=cwd+'/senna/'     
         os.chdir(path)
-        cmd = '.\\senna-win32 -srl < ' + preprocessed_file + ' > output.txt'        
-        print(cmd)
+        cmd = '.\\senna-win32 -srl < ' + preprocessed_file + ' > output.txt'                
       #cmd = './senna -pos -ner -srl < ' + preprocessed_file + ' > output.txt'
       os.system(cmd)
   except:    

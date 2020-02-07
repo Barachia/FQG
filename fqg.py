@@ -967,15 +967,15 @@ def generate_questions (sentenceList, dlines):
         if len(sentenceQAList) == 0:
             print (sentenceText)
         listOfAllGeneratedQA.append(sentenceQAList)
-        try:
-            writeQA(sentenceQAList, sentenceText, i, QAroot)
-        except:
-            print ('Failed to write the QA XML for:', sentenceText)
+        # try:
+        #     writeQA(sentenceQAList, sentenceText, i, QAroot)
+        # except:
+        #     print ('Failed to write the QA XML for:', sentenceText)
             
-    xml = ET.tostring(QAroot,encoding='utf8', pretty_print=True)
-    fp = open("generated_qa.xml", "wb")
-    fp.write(xml)
-    fp.close()
+    # xml = ET.tostring(QAroot,encoding='utf8', pretty_print=True)
+    # fp = open("generated_qa.xml", "wb")
+    # fp.write(xml)
+    # fp.close()
     #print ('Statement and follow-up question pairs are successfully generated.')
             
     return listOfAllGeneratedQA
