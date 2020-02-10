@@ -28,14 +28,14 @@ with open(starter_questions, encoding='utf-8') as f:
 starterQuestions = dlines
 
 @hug.get("/openquestions")
-def getStarterQuestions():
+def getStarterQuestions(lang: str):
     """Retrieve the open questions"""
     root = {}       
     root['openquestions'] = json.dumps(starterQuestions)  
     return root
 
 @hug.get("/followupquestions")
-def getFollowUpQuestions(text: str):
+def getFollowUpQuestions(text: str, lang: str):
     """Retrieve the follow-up questions for a sentence"""
     with open(input_path, 'w', encoding='utf-8') as f:
         f.write("%s\n" % text)
@@ -48,7 +48,7 @@ def getFollowUpQuestions(text: str):
     return root
     
 @hug.get("/topicalquestions")    
-def getTopicalQuestions(topic):
+def getTopicalQuestions(topic: str, lang: str):
     questions = []
     root = {}
     root['topicalquestions'] = json.dumps(questions)
@@ -79,6 +79,6 @@ def server():
         app.http.add_middleware(CORSMiddleware(app))
         waitress.serve(__hug_wsgi__, host='0.0.0.0', port=8190)
 
-testQuestions()
-# server()
+# testQuestions()
+server()
 
