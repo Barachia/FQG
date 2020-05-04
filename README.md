@@ -20,8 +20,10 @@ To run with a user interface: `ui.py` (set both parameters for TRAINING and TEST
 
 To run a question server for the follow-up questions, run `python question_server.py`. You should be able to make calls to the server with this:
 
-## Open questions: http://localhost:8190/openquestions?lang=en
-## Follow-up questions: http://localhost:8190/followupquestions?text=[TEXT]&lang=en
+## Open questions
+http://localhost:8190/openquestions?lang=en
+## Follow-up questions
+http://localhost:8190/followupquestions?text=[TEXT]&lang=en
 
 # References
 Mandasari, Y. (2019). Follow-up Question Generation (Master's thesis, University of Twente).
